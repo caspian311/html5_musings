@@ -1,17 +1,11 @@
-require(["http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.3.1.min.js"], function() {
+define(function() {
    var StarFighter = function() {
-      var _draw = function() {
-         
+      this.draw = function() {
       }
 
-      var _update = function() {
+      this.update = function() {
       }
+   };
 
-      return {
-         draw: _draw,
-         update: _update 
-      }
-   }
-
-   window.StarFighter = StarFighter
+   return StarFighter;
 })

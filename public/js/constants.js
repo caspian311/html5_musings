@@ -1,4 +1,4 @@
-(function() {
+define(function() {
    var Constants = {
       FOV: 250,
       SCREEN_WIDTH: 600,
@@ -8,5 +8,5 @@
    Constants.HALF_WIDTH = Constants.SCREEN_WIDTH / 2
    Constants.HALF_HEIGHT = Constants.SCREEN_HEIGHT / 2
 
-   window.Constants = Constants
-})()
+   return Constants;
+});

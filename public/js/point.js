@@ -1,10 +1,10 @@
-(function() {
+define(['Constants'], function(Constants) {
    var Point = function(x, y, z) {
       var _x = x
       var _y = y
       var _z = z
 
-      var _draw = function(canvas) {
+      this.draw = function(canvas) {
          var scale = Constants.FOV / (Constants.FOV + _z); 
 
          var x2d = (_x * scale) + Constants.HALF_WIDTH
@@ -18,25 +18,18 @@
          canvas.stroke(); 
       }
 
-      var _update = function(z_delta) {
+      this.update = function(z_delta) {
          _z += z_delta
       }
 
-      var _debug = function() {
+      this.debug = function() {
          console.log("x: " + _x + ", y: " + _y + ", z: " + _z)
       }
 
-      var _is_beyond_fox = function() {
+      this.is_beyond_fov = function() {
          return _z < -(Constants.FOV)
-      }
-
-      return {
-         draw: _draw,
-         update: _update,
-         is_beyond_fov: _is_beyond_fox,
-         debug: _debug
       }
    }
 
-   window.Point = Point
-})()
+   return Point;
+});

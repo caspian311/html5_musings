@@ -1,4 +1,4 @@
-(function() {
+define(function() {
    var Controller = function(engine) {
       $(window.document).keypress(function(event) {
          if (event.charCode == 32) {
@@ -10,7 +10,7 @@
          } else {
             console.log("keycode: '" + event.keyCode + "'")
          }
-      })
-   }
-   window.Controller = Controller
-})()
+      });
+   };
+   return Controller;
+});

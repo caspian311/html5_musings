@@ -1,12 +1,9 @@
 require([
-      "http://code.jquery.com/jquery-1.9.0.min.js",
-      "constants",
       "controller", 
       "engine", 
-      "point", 
       "star_field",
       "star_fighter"
-      ], function() {
+      ], function(Controller, Engine, StarField, StarFighter) {
    $(function() {
       var canvas = $("#my_canvas")[0].getContext("2d")
 
