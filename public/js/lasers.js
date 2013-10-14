@@ -40,10 +40,20 @@ define(function() {
          } else {
             if (characterCode == 102) {
                isAnimating = true;
-               target = mousePosition;
+               createLine(mousePosition);
             }
          }
       }
+
+      var createLine = function(target) {
+         var x1 = startingPosition.x;
+         var y2 = startingPosition.y;
+         var x2 = target.x;
+         var y2 = target.y;
+
+         var slope = (x2 - x1) / (y2 - y1);
+         var yIntercept = y1 - (slope * x1);
+      };
    };
 
    return Lasers;
