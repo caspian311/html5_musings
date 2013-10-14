@@ -12,6 +12,7 @@ require([
       engine.add(new StarFighter(canvas));
       new Controller(engine);
 
-      window.setInterval(engine.main_loop, 50);
+      engine.initialize();
+      window.setInterval(engine.mainLoop, 50);
    })
 })

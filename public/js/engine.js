@@ -6,7 +6,7 @@ define(function() {
       var _is_debugging = false;
       var self = this;
 
-      self.main_loop = function() {
+      self.mainLoop = function() {
          _items_to_render.map(function(renderable) {
             if (_is_running) {
                renderable.update(self.lastCharacterCode);
