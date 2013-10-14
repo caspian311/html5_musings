@@ -1,20 +1,33 @@
 define(function() {
    var Lasers = function() {
       var isAnimating = false
-         , currentPosition = { x: 0, y: 0 };
+         , startingPosition = { x: 0, y: 0 };
+         , startOfBlast, endOfBlast
+         , lengthOfBlast = 20;
 
       this.initialize = function() {
+         startOfBlast = startingPosition;
+         endOfBlast = startingPosition;
       };
 
       this.draw = function(canvas) {
          if (!isAnimating) {
             return;
          }
-         drawBlast();
+         drawBlast(canvas);
       }
 
+      var drawBlast = function(canvas) {
+         canvas.beginPath();
+         cavas.moveTo(endOfBlast.x, endOfBlast.y);
+         cavas.lineTo(startOfBlast.x, startOfBlast.y);
+         cavas.strokeWidth = 2;
+         cavas.strokeStyle = '#f00';
+         cavas.stroke();
+         canvas.closePath();
+      };
+
       var updateStartOfBlast = function() {
-         
       }
 
       var updateEndOfBlast = function() {
