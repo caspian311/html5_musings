@@ -11,7 +11,7 @@ require([
       var engine = new Engine(canvas);
       engine.add(new StarField());
       engine.add(new Target());
-//      engine.add(new Lasers());
+      engine.add(new Lasers());
       new Controller(engine);
 
       engine.initialize();
