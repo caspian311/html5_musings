@@ -1,16 +1,25 @@
 define(function() {
    var Controller = function(engine) {
-      $(window.document).keypress(function(event) {
-         if (event.charCode == 32) {
-            engine.toggle_running()
-         } else if (event.charCode == 100) {
-            engine.toggle_debugging()
-         } else if (event.charCode == 114) {
-            engine.reset()
-         }
+      var SPACE = 32, d = 100, r = 114
 
-         engine.controlPressed(event.charCode);
-      });
+      var mapKeyPress = function(event) {
+         switch (event.charCode) {
+            case SPACE:
+               engine.toggle_running()
+               break;
+            case d:
+               engine.toggle_debugging()
+               break;
+            case r:
+               engine.reset();
+               break;
+            default:
+               engine.controlPressed(event.charCode);
+               break;
+         }
+      };
+
+      $(window.document).keypress(mapKeyPress);
    };
    return Controller;
 });
