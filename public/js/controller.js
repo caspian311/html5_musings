@@ -7,9 +7,9 @@ define(function() {
             engine.toggle_debugging()
          } else if (event.charCode == 114) {
             engine.reset()
-         } else {
-            console.log("keycode: '" + event.keyCode + "'")
          }
+
+         engine.controlPressed(event.charCode);
       });
    };
    return Controller;
