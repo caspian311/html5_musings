@@ -4,12 +4,13 @@ define(function() {
       var _items_to_render = [];
       var _is_running = true;
       var _is_debugging = false;
+      var _lastCharacterCode, _mousePosition;
       var self = this;
 
       self.mainLoop = function() {
          _items_to_render.map(function(renderable) {
             if (_is_running) {
-               renderable.update(self.lastCharacterCode);
+               renderable.update(_lastCharacterCode, _mousePosition);
                renderable.draw(_canvas);
 
                if (_is_debugging) {
@@ -30,6 +31,12 @@ define(function() {
          })
       };
 
+      self.initialize = function() {
+         _items_to_render.map(function(renderable) {
+            renderable.initialize();
+         });
+      }
+
       self.toggle_debugging = function() {
          _is_debugging = _is_debugging ? false : true;
       };
@@ -39,8 +46,12 @@ define(function() {
       };
 
       self.controlPressed = function(characterCode) {
-         self.lastCharacterCode = characterCode;
+         _lastCharacterCode = characterCode;
       };
+
+      self.updateMousePosition = function(x, y) {
+         _mousePosition = { x: x, y: y };
+      }
    };
 
    return Engine;

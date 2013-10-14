@@ -2,14 +2,16 @@ require([
       "controller", 
       "engine", 
       "star_field",
-      "star_fighter"
-      ], function(Controller, Engine, StarField, StarFighter) {
+      "target",
+      "lasers"
+      ], function(Controller, Engine, StarField, Target, Lasers) {
    $(function() {
       var canvas = $("#my_canvas")[0].getContext("2d");
 
       var engine = new Engine(canvas);
-      engine.add(new StarField(canvas));
-      engine.add(new StarFighter(canvas));
+      engine.add(new StarField());
+      engine.add(new Target());
+//      engine.add(new Lasers());
       new Controller(engine);
 
       engine.initialize();

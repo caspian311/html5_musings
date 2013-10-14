@@ -19,7 +19,12 @@ define(function() {
          }
       };
 
+      var updateMousePosition = function(event) {
+         engine.updateMousePosition(event.pageX, event.pageY);
+      };
+
       $(window.document).keypress(mapKeyPress);
+      $(window.document).mousemove(updateMousePosition);
    };
    return Controller;
 });
