@@ -7,7 +7,8 @@ define(['constants'], function(Constants) {
             self.grid.push([]);
 
             for (var y=0; y<Constants.NUMBER_OF_CELLS_HEIGHT; y++) {
-               self.grid[x].push(Math.floor(Math.random() * 100) % 2);
+               var isAlive = Math.floor(Math.random() * 100) % 2;
+               self.grid[x].push(isAlive);
             }
          }
       };

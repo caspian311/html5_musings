@@ -11,6 +11,6 @@ require([
       new Controller(engine);
 
       engine.initialize();
-      window.setInterval(engine.mainLoop, 50);
+      window.setInterval(engine.mainLoop, 1000);
    })
 })
