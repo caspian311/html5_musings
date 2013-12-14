@@ -17,18 +17,20 @@ define(['constants', 'model'], function(Constants, Model) {
          canvas.fillStyle = "rgb(255, 255, 255)";
          for (var x=0; x<_model.grid.length; x++) {
             for (var y=0; y<_model.grid[x].length; y++) {
-               _renderCell(x, y, grid[x][y]);
+               _renderCell(canvas, x, y, _model.grid[x][y]);
             }
          }
       };
 
-      var _renderCell = function(x, y, isAlive) {
+      var _renderCell = function(canvas, x, y, isAlive) {
          var topLeftX = Constants.WIDTH_OF_CELL * x;
          var topLeftY = Constants.HEIGHT_OF_CELL * y;
          var bottomRightX = topLeftX + Constants.WIDTH_OF_CELL;
          var bottomRightY = topLeftY + Constants.HEIGHT_OF_CELL;
 
-         canvas.fillRect(topLeftX, topLeftY, bottomRightX, bottomRightY);
+         if (isAlive) {
+            canvas.fillRect(topLeftX, topLeftY, bottomRightX, bottomRightY);
+         }
       };
 
       this.initialize();
