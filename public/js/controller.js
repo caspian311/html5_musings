@@ -1,5 +1,5 @@
 define(function() {
-   var Controller = function(engine) {
+   var _start = function(engine) {
       var SPACE = 32, d = 100, r = 114
 
       var mapKeyPress = function(event) {
@@ -26,5 +26,5 @@ define(function() {
       $(window.document).keypress(mapKeyPress);
       $(window.document).mousemove(updateMousePosition);
    };
-   return Controller;
+   return { start: _start };
 });
