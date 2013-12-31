@@ -10,6 +10,17 @@ define(['constants', 'model'], function(Constants, Model) {
          _model.update();
       }
 
+      this.debug = function() {
+         var output = '';
+         for (var x=0; x<_model.grid.length; x++) {
+            for (var y=0; y<_model.grid[x].length; y++) {
+               output += _model.grid[x][y] ? '*' : ' ';
+            }
+            output += '\n';
+         }
+         console.log(output);
+      }
+
       this.draw = function(canvas) {
          canvas.fillStyle = "rgb(0,0,0)";
          canvas.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
