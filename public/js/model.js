@@ -1,7 +1,8 @@
 define(['constants'], function(Constants) {
    var Model = function() {
       var self = this;
-      this.initialize = function() {
+
+      self.initialize = function() {
          self.grid = [];
          for (var x=0; x<Constants.NUMBER_OF_CELLS_WIDTH; x++) {
             self.grid.push([]);
@@ -13,7 +14,7 @@ define(['constants'], function(Constants) {
          }
       };
 
-      this.update = function() {
+      self.update = function() {
          self.grid = updateGrid();
       };
 
