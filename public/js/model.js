@@ -2,75 +2,69 @@ define(['constants'], function(Constants) {
    var Model = function() {
       var self = this;
 
-      self.initialize = function() {
-         self.grid = [];
-         for (var x=0; x<Constants.NUMBER_OF_CELLS_WIDTH; x++) {
-            self.grid.push([]);
-
-            for (var y=0; y<Constants.NUMBER_OF_CELLS_HEIGHT; y++) {
-               var isAlive = Math.floor(Math.random() * 100) % 2;
-               self.grid[x].push(isAlive);
-            }
-         }
-      };
-
-      self.update = function() {
-         self.grid = updateGrid();
-      };
-
-      var updateGrid = function() {
+      var updateGrid = function(getValue) {
          var newGrid = [];
          for (var x=0; x<Constants.NUMBER_OF_CELLS_WIDTH; x++) {
             newGrid.push([]);
 
             for (var y=0; y<Constants.NUMBER_OF_CELLS_HEIGHT; y++) {
-               newGrid[x].push(isAlive(x, y));
+               newGrid[x].push(getValue(x, y));
             }
          }
          return newGrid;
       };
 
-      var isAlive = function(x, y) {
-         var isAlive = true;
-         var numberOfNeighbors = findNumberOfNeighbors(x, y);
-         if (numberOfNeighbors < 2) {
-            isAlive = false;
-         } else if (numberOfNeighbors > 3) {
-            isAlive = false;
-         }
-         return isAlive;
+      self.initialize = function() {
+         self.grid = updateGrid(function() {
+            return Math.floor(Math.random() * 100) % 2;
+         });
       };
 
-      var findNumberOfNeighbors = function(x, y) {
+      self.update = function() {
+         self.grid = updateGrid(isAlive);
+      };
+
+      var isAlive = function(x, y) {
+         var cellIsAlive = true;
+         var neighbors = numberOfNeighbors(x, y);
+         if (neighbors < 2) {
+            cellIsAlive = false;
+         } else if (neighbors > 3) {
+            cellIsAlive = false;
+         }
+         return cellIsAlive;
+      };
+
+      var numberOfNeighbors = function(x, y) {
          var neighbors = 0;
-         if (isAliveAt(x - 1, y - 1)) {
+         if (cellPresentAt(x - 1, y - 1)) {
             neighbors++;
          }
-         if (isAliveAt(x, y - 1)) {
+         if (cellPresentAt(x, y - 1)) {
             neighbors++;
          }
-         if (isAliveAt(x + 1, y - 1)) {
+         if (cellPresentAt(x + 1, y - 1)) {
             neighbors++;
          }
-         if (isAliveAt(x - 1, y)) {
+         if (cellPresentAt(x - 1, y)) {
             neighbors++;
          }
-         if (isAliveAt(x + 1, y)) {
+         if (cellPresentAt(x + 1, y)) {
             neighbors++;
          }
-         if (isAliveAt(x - 1, y + 1)) {
+         if (cellPresentAt(x - 1, y + 1)) {
             neighbors++;
          }
-         if (isAliveAt(x, y + 1)) {
+         if (cellPresentAt(x, y + 1)) {
             neighbors++;
          }
-         if (isAliveAt(x + 1, y + 1)) {
+         if (cellPresentAt(x + 1, y + 1)) {
             neighbors++;
          }
          return neighbors;
       };
 
-      var isAliveAt = function(x, y) {
+      var cellPresentAt = function(x, y) {
          try {
             var isAlive;
             if (x < 0) {
