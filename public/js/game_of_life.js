@@ -22,29 +22,35 @@ define(['constants', 'model'], function(Constants, Model) {
       }
 
       this.draw = function(canvas) {
+         _resetBoard(canvas);
+
+         _drawGrid(canvas);
+      };
+
+      var _resetBoard = function(canvas) {
          canvas.fillStyle = "rgb(0,0,0)";
          canvas.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+      }
 
+      var _drawGrid = function(canvas) {
          canvas.fillStyle = "rgb(255, 255, 255)";
          for (var x=0; x<_model.grid.length; x++) {
             for (var y=0; y<_model.grid[x].length; y++) {
-               _renderCell(canvas, x, y, _model.grid[x][y]);
+               if (_model.grid[x][y]) {
+                  _renderCell(canvas, x, y);
+               }
             }
          }
-      };
+      }
 
-      var _renderCell = function(canvas, x, y, isAlive) {
+      var _renderCell = function(canvas, x, y) {
          var topLeftX = Constants.WIDTH_OF_CELL * x;
          var topLeftY = Constants.HEIGHT_OF_CELL * y;
          var bottomRightX = topLeftX + Constants.WIDTH_OF_CELL;
          var bottomRightY = topLeftY + Constants.HEIGHT_OF_CELL;
 
-         if (isAlive) {
-            canvas.fillRect(topLeftX, topLeftY, bottomRightX, bottomRightY);
-         }
+         canvas.fillRect(topLeftX, topLeftY, bottomRightX, bottomRightY);
       };
-
-      this.initialize();
    };
 
    return GameOfLife;
