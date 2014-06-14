@@ -45,6 +45,7 @@ define(function() {
 
       self.toggle_running = function() {
          _is_running = _is_running ? false : true;
+         console.log(_is_running ? 'Resume' : 'Pause');
       };
 
       self.controlPressed = function(characterCode) {
