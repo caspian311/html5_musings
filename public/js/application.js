@@ -1,13 +1,13 @@
 require([
       "controller", 
       "engine", 
-      "game_of_life"
-      ], function(controller, Engine, GameOfLife) {
+      "shapes"
+      ], function(controller, Engine, Shapes) {
    $(function() {
       var canvas = $("#my_canvas")[0].getContext("2d");
 
       var engine = new Engine(canvas);
-      engine.add(new GameOfLife());
+      engine.add(new Shapes());
       controller.start(engine);
 
       engine.initialize();
