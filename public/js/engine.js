@@ -3,7 +3,7 @@ define(function() {
       var _canvas = canvas;
       var _items_to_render = [];
       var _is_running = true;
-      var _is_debugging = false;
+      var _is_debugging = true;
       var _lastCharacterCode, _mousePosition;
       var self = this;
 
