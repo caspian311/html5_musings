@@ -16,10 +16,12 @@ define(function() {
       };
 
       self.update = function(characterCode, mousePosition) {
-         targetPosition = { 
-            x: mousePosition.x - size, 
-            y: mousePosition.y - size 
-         };
+         if (mousePosition) {
+            targetPosition = { 
+               x: mousePosition.x - size,
+               y: mousePosition.y - size
+            };
+         }
       };
    };
 

@@ -1,7 +1,7 @@
 define(function() {
    var Lasers = function() {
       var isAnimating = false
-         , startingPosition = { x: 0, y: 0 };
+         , startingPosition = { x: 0, y: 0 }
          , startOfBlast, endOfBlast
          , lengthOfBlast = 20;
 
